@@ -72,7 +72,8 @@ update msg model =
 
         Perform op ->
             let
-                updatedValue = model.currentOp model.currentValue
+                updatedValue =
+                    model.currentOp model.currentValue
             in
             { model
                 | currentValue = updatedValue
