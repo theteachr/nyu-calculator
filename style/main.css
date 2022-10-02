@@ -88,12 +88,15 @@ button {
 .equals {
     grid-row: 2 / span 4;
     grid-column-start: 4;
-    background: var(--peach-red);
-    color: var(--winter-blue);
+    color: var(--autumn-yellow);
 }
 
 button:active {
     box-shadow:
         inset  2px  2px 4px #0000007F,
         inset -2px -2px 4px #FFFFFF0B;
+}
+
+.operator {
+    color: var(--wave-red);
 }
