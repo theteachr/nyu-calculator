@@ -1,0 +1,99 @@
+:root {
+    --fuji-white: #DCD7BA;
+    --old-white: #C8C093;
+    --sumi-ink0: #16161D;
+    --sumi-ink1: #1F1F28;
+    --sumi-ink2: #2A2A37;
+    --sumi-ink3: #363646;
+    --sumi-ink4: #54546D;
+    --wave-blue1: #223249;
+    --wave-blue2: #2D4F67;
+    --winter-green: #2B3328;
+    --winter-yellow: #49443C;
+    --winter-red: #43242B;
+    --winter-blue: #252535;
+    --autumn-green: #76946A;
+    --autumn-red: #C34043;
+    --autumn-yellow: #DCA561;
+    --samurai-red: #E82424;
+    --ronin-yellow: #FF9E3B;
+    --wave-aqua1: #6A9589;
+    --dragon-blue: #658594;
+    --fuji-gray: #727169;
+    --spring-violet1: #938AA9;
+    --oni-violet: #957FB8;
+    --crystal-blue: #7E9CD8;
+    --spring-violet2: #9CABCA;
+    --spring-blue: #7FB4CA;
+    --light-blue: #A3D4D5;
+    --wave-aqua2: #7AA89F;
+    --spring-green: #98BB6C;
+    --boat-yellow1: #938056;
+    --boat-yellow2: #C0A36E;
+    --carp-yellow: #E6C384;
+    --sakura-pink: #D27E99;
+    --wave-red: #E46876;
+    --peach-red: #FF5D62;
+    --surimi-orange: #FFA066;
+    --katana-gray: #717C7C;
+}
+
+body {
+    background: var(--sumi-ink1);
+    font-family: 'Monaco', monospace;
+}
+
+.base {
+    width: 256px;
+    height: 360px;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    gap: 1rem;
+    box-shadow:
+         4px  4px 8px #0000007F,
+        -4px -4px 4px #FFFFFF0B;
+    transform: scale(1.5);
+}
+
+.display {
+    display: grid;
+    place-items: end;
+    padding: 1rem;
+    background: var(--carp-yellow);
+    border-radius: 8px;
+    font-weight: bolder;
+    box-shadow:
+        inset  2px  2px 8px #0000007F,
+        inset -2px -2px 4px #ffffff24;
+}
+
+.buttons {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+button {
+    border: none;
+    border-radius: 4px;
+    box-shadow:
+         2px  2px 8px #0000007F,
+        -2px -2px 4px #FFFFFF0B;
+    color: var(--fuji-white);
+}
+
+.equals {
+    grid-row: 2 / span 4;
+    grid-column-start: 4;
+    background: var(--peach-red);
+    color: var(--winter-blue);
+}
+
+button:active {
+    box-shadow:
+        inset  2px  2px 4px #0000007F,
+        inset -2px -2px 4px #FFFFFF0B;
+}
