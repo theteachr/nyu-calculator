@@ -9,32 +9,23 @@
   <link rel="stylesheet" href="style/center.css">
   <link rel="stylesheet" href="style/reset.css">
   <link rel="stylesheet" href="style/main.css">
+  <script src="elm.js"></script>
 </head>
 <body>
-  <div class="base">
-    <div class="display">
-      <p>0</p>
-    </div>
-    <div class="buttons">
-      <button class="operator">&plus;</button>
-      <button class="operator">&minus;</button>
-      <button class="operator">&times;</button>
-      <button class="operator">&divide;</button>
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>0</button>
-      <button>.</button>
-      <button>C</button>
-      <button class="equals">=</button>
-    </div>
-  </div>
+  <div id="nyu-calc"></div>
   <!-- <a href="https://www.flaticon.com/free-icons/calculator" title="calculator icons">Calculator icons created by Flowicon - Flaticon</a> -->
+  <script>
+    const app = Elm.Main.init({
+      node: document.getElementById("nyu-calc"),
+      flags: Date.now()
+    })
+  </script>
 </body>
 </html>
+
+<!--
++
+−
+×
+÷
+-->

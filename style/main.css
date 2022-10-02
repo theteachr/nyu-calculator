@@ -41,6 +41,7 @@
 body {
     background: var(--sumi-ink1);
     font-family: 'Monaco', monospace;
+    color: var(--fuji-white);
 }
 
 .base {
@@ -59,6 +60,7 @@ body {
 
 .display {
     display: grid;
+		color: black;
     place-items: end;
     padding: 1rem;
     background: var(--carp-yellow);
