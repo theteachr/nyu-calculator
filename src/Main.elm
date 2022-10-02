@@ -1,7 +1,7 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (button, div, text)
+import Html exposing (Html, button, div, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 
@@ -90,6 +90,7 @@ update msg model =
             init
 
 
+view : Model -> Html Msg
 view model =
     div [ class "base" ]
         [ div [ class "display" ] [ text (String.fromFloat model.currentValue) ]
