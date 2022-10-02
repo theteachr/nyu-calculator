@@ -6,12 +6,6 @@ import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 
 
-
--- main
--- update
--- view
-
-
 main =
     Browser.sandbox { init = init, update = update, view = view }
 
@@ -120,14 +114,20 @@ view model =
             ]
         ]
 
+--- { cV = 0, cO = i, cS = "" }
 
+--> Number 1
 
--- { cV = 0, cO = i, cS = "" }
-----> Number 1
--- { cV = 1, cO = i, cS = "1" }
-----> Perform Add
--- { cV = 1, cO = (+) 1, cS = "" }
-----> Number 2
--- { cV = 2, cO = (+) 86, cS = "1"
-----> Eval
--- { cV = 87, cO = i, cS = "" }
+--- { cV = 1, cO = i, cS = "1" }
+
+--> Perform Add
+
+--- { cV = 1, cO = (+) 1, cS = "" }
+
+--> Number 2
+
+--- { cV = 2, cO = (+) 1, cS = "2"
+
+--> Eval
+
+-- { cV = 3, cO = i, cS = "" }
