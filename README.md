@@ -1,3 +1,3 @@
 # Not Your Usual Calculator
 
-A simple calculator build with Elm.
+A simple calculator built with Elm.
