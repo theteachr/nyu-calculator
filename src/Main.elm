@@ -115,20 +115,22 @@ view model =
             ]
         ]
 
---- { cV = 0, cO = i, cS = "" }
 
---> Number 1
 
---- { cV = 1, cO = i, cS = "1" }
+{-
 
---> Perform Add
+   { cV = 0, cO = i, cS = "" }
+   : Number 1
 
---- { cV = 1, cO = (+) 1, cS = "" }
+   { cV = 1, cO = i, cS = "1" }
+   : Perform Add
 
---> Number 2
+   { cV = 1, cO = (+) 1, cS = "" }
+   : Number 2
 
---- { cV = 2, cO = (+) 1, cS = "2"
+   { cV = 2, cO = (+) 1, cS = "2" }
+   : Eval
 
---> Eval
+   { cV = 3, cO = i, cS = "" }
 
--- { cV = 3, cO = i, cS = "" }
+-}
