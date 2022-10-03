@@ -5,6 +5,10 @@ import Html exposing (Html, button, div, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 
+-- FIXME: Issue with triggering `Perform` immediately after another `Perform`
+-- TODO: Implement `.` 
+-- TODO: Implement unary operator (-)
+-- TODO: Keep the operator button pressed in until a number is pressed
 
 main =
     Browser.sandbox { init = init, update = update, view = view }
