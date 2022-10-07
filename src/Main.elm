@@ -10,6 +10,7 @@ import Html.Events exposing (onClick)
 -- TODO: Implement unary operator (-)
 -- TODO: Keep the operator button pressed in until a number is pressed
 
+main : Program () Model Msg
 main =
     Browser.sandbox { init = init, update = update, view = view }
 
@@ -28,6 +29,7 @@ type Op
     | Div
 
 
+toFn : Op -> Float -> Float -> Float
 toFn op =
     case op of
         Add ->
