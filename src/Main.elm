@@ -9,6 +9,7 @@ import Html.Events exposing (onClick)
 -- TODO: Implement `.` 
 -- TODO: Implement unary operator (-)
 -- TODO: Keep the operator button pressed in until a number is pressed
+-- TODO: When `=` is pressed, apply the last operation to the value displayed
 
 main : Program () Model Msg
 main =
