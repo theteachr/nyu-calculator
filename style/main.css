@@ -58,7 +58,7 @@ button {
 .equals {
     grid-row: 2 / span 4;
     grid-column-start: 4;
-    color: var(--autumn-yellow);
+    color: var(--surimi-orange);
 }
 
 button:active {
