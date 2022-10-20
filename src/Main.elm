@@ -1,15 +1,18 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, button, div, text)
-import Html.Attributes exposing (class)
+import Html exposing (Html, button, div, input, label, text)
+import Html.Attributes exposing (checked, class, for, id, name, type_)
 import Html.Events exposing (onClick)
 
+
+
 -- FIXME: Issue with triggering `Perform` immediately after another `Perform`
--- TODO: Implement `.` 
+-- TODO: Implement `.`
 -- TODO: Implement unary operator (-)
 -- TODO: Keep the operator button pressed in until a number is pressed
 -- TODO: When `=` is pressed, apply the last operation to the value displayed
+
 
 main : Program () Model Msg
 main =
@@ -20,6 +23,7 @@ type alias Model =
     { currentValue : Float
     , currentValueString : String
     , currentOp : Float -> Float
+    , selectedOp : Maybe Op
     }
 
 
@@ -48,7 +52,11 @@ toFn op =
 
 init : Model
 init =
-    Model 0.0 "" identity
+    { currentValue = 0.0
+    , currentValueString = ""
+    , currentOp = identity
+    , selectedOp = Nothing
+    }
 
 
 type Msg
@@ -74,10 +82,15 @@ update msg model =
         Perform op ->
             let
                 updatedValue =
-                    model.currentOp model.currentValue
+                    if String.isEmpty model.currentValueString then
+                        model.currentValue
+
+                    else
+                        model.currentOp model.currentValue
             in
             { model
                 | currentValue = updatedValue
+                , selectedOp = Just op
                 , currentOp = updatedValue |> toFn op
                 , currentValueString = ""
             }
@@ -87,14 +100,62 @@ update msg model =
                 result =
                     model.currentOp model.currentValue
             in
-            { model
-                | currentValue = result
-                , currentValueString = ""
-                , currentOp = identity
-            }
+            { init | currentValue = result }
 
         Reset ->
             init
+
+
+operatorId : Op -> String
+operatorId op =
+    case op of
+        Add ->
+            "add"
+
+        Sub ->
+            "sub"
+
+        Mul ->
+            "mul"
+
+        Div ->
+            "div"
+
+
+operatorText : Op -> String
+operatorText op =
+    case op of
+        Add ->
+            "+"
+
+        Sub ->
+            "-"
+
+        Mul ->
+            "×"
+
+        Div ->
+            "÷"
+
+
+viewOperatorButton : Maybe Op -> Op -> Html Msg
+viewOperatorButton selectedOp op =
+    div []
+        [ input
+            [ id (operatorId op)
+            , class "operator-radio"
+            , type_ "radio"
+            , name "operator"
+            , onClick (Perform op)
+            , checked (selectedOp |> Maybe.map ((==) op) |> Maybe.withDefault False)
+            ]
+            []
+        , label
+            [ for (operatorId op)
+            , class "operator calc-button"
+            ]
+            [ text (operatorText op) ]
+        ]
 
 
 view : Model -> Html Msg
@@ -102,23 +163,23 @@ view model =
     div [ class "base" ]
         [ div [ class "display" ] [ text (String.fromFloat model.currentValue) ]
         , div [ class "buttons" ]
-            [ button [ class "operator", onClick (Perform Add) ] [ text "+" ]
-            , button [ class "operator", onClick (Perform Sub) ] [ text "−" ]
-            , button [ class "operator", onClick (Perform Mul) ] [ text "×" ]
-            , button [ class "operator", onClick (Perform Div) ] [ text "÷" ]
-            , button [ class "equals", onClick Eval ] [ text "=" ]
-            , button [ onClick (Number 7) ] [ text "7" ]
-            , button [ onClick (Number 8) ] [ text "8" ]
-            , button [ onClick (Number 9) ] [ text "9" ]
-            , button [ onClick (Number 4) ] [ text "4" ]
-            , button [ onClick (Number 5) ] [ text "5" ]
-            , button [ onClick (Number 6) ] [ text "6" ]
-            , button [ onClick (Number 1) ] [ text "1" ]
-            , button [ onClick (Number 2) ] [ text "2" ]
-            , button [ onClick (Number 3) ] [ text "3" ]
-            , button [ onClick (Number 0) ] [ text "0" ]
-            , button [] [ text "." ]
-            , button [ onClick Reset ] [ text "C" ]
+            [ viewOperatorButton model.selectedOp Add
+            , viewOperatorButton model.selectedOp Sub
+            , viewOperatorButton model.selectedOp Mul
+            , viewOperatorButton model.selectedOp Div
+            , button [ class "calc-button equals", onClick Eval ] [ text "=" ]
+            , button [ class "calc-button", onClick (Number 7) ] [ text "7" ]
+            , button [ class "calc-button", onClick (Number 8) ] [ text "8" ]
+            , button [ class "calc-button", onClick (Number 9) ] [ text "9" ]
+            , button [ class "calc-button", onClick (Number 4) ] [ text "4" ]
+            , button [ class "calc-button", onClick (Number 5) ] [ text "5" ]
+            , button [ class "calc-button", onClick (Number 6) ] [ text "6" ]
+            , button [ class "calc-button", onClick (Number 1) ] [ text "1" ]
+            , button [ class "calc-button", onClick (Number 2) ] [ text "2" ]
+            , button [ class "calc-button", onClick (Number 3) ] [ text "3" ]
+            , button [ class "calc-button", onClick (Number 0) ] [ text "0" ]
+            , button [ class "calc-button" ] [ text "." ]
+            , button [ class "calc-button", onClick Reset ] [ text "C" ]
             ]
         ]
 

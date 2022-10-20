@@ -42,11 +42,16 @@ body {
 	gap: 8px;
 }
 
-button {
+.calc-button {
 	border: none;
+	width: 100%;
+	height: 100%;
 	border-radius: 4px;
 	box-shadow: 2px 2px 8px #0000007F, -2px -2px 4px #FFFFFF0B;
 	color: var(--fuji-white);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .equals {
@@ -55,10 +60,20 @@ button {
 	color: var(--surimi-orange);
 }
 
-button:active {
+.calc-button:active {
 	box-shadow: inset 2px 2px 4px #0000007F, inset -2px -2px 4px #FFFFFF0B;
 }
 
 .operator {
 	color: var(--wave-red);
+	width: 100%;
+	height: 100%;
+}
+
+.operator-radio {
+	display: none;
+}
+
+.operator-radio:checked + .operator {
+	box-shadow: inset 2px 2px 4px #0000007F, inset -2px -2px 4px #FFFFFF0B;
 }
